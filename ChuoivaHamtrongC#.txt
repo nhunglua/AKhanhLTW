@@ -1,0 +1,279 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Vidu1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = "abcdefghijklmnopqrst";
+            string str = "";
+            for (int i = 0; i < 5; i++)
+            {
+                str =  i.ToString()+str ;
+            }
+            Console.WriteLine(str);
+            Console.ReadKey();
+        }
+    }
+}
+////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Vidu1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = "abcdefghijklmnopqrst";
+            int a = s.Length;
+            Console.WriteLine("{1} do dai la {0}", a,s);
+            string s1 = s.Substring(4);
+            string s2 = s.Substring(4, 4);
+            Console.WriteLine("{0}---{1}", s1, s2);
+            string s3 = s.Replace("def", "1234567890");
+            Console.WriteLine(s3);
+            int v = s.IndexOf("ij");
+            Console.WriteLine("vi tri cua ij trong chuoi la {0}", v);
+            Console.ReadKey();
+        }
+    }
+}
+/////////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Vidu1
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] a = new int[] { 1, 33, 4, 2, 6, 7, 8 };
+            int[] b = new int[5];
+            b = Enumerable.Repeat(1, 5).ToArray();
+            for (int i = 0; i < a.Length; i++)
+            {
+                Console.WriteLine(a[i]);
+            }
+            foreach (int x in a)
+            {
+                Console.WriteLine(x);
+            }
+            Console.ReadKey();
+        }
+    }
+}
+////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Vidu1
+{
+    class Program
+    {
+        static void Main()
+        {
+            Console.Write("Nhap noi dung nao do:");
+            bool ok;
+            int so;
+            do
+            {
+                string s = Console.ReadLine();
+                ok = int.TryParse(s, out so);
+                if (!ok)
+                    Console.WriteLine("Khong phai dinh dang so! Nhap lai.");
+            } while (!ok);
+            Console.WriteLine("so vua nhap la " + so.ToString());
+            Console.ReadKey();
+        }
+    }
+}
+////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Vidu1
+{
+    class Program
+    {
+        static void Ham1(int so) { }
+        static void Ham2(int so1, int so2=10,int so3 = 20) { }
+        static void Ham3(int so1, params int[] arr) { }
+        static void Ham4(ref int so) 
+        {
+            so = 20;
+        }
+        static void Ham5(out int so)
+        {
+            so = 20;
+        }
+        static void Main()
+        {
+            //Cach 1
+            Ham1(10);
+            //Cach 2
+            Ham2(11);
+            Ham2(11, 21);
+            Ham2(11, so3: 33);
+            //Cach 3
+            Ham3(10, 1, 2, 4, 3, 5, 2, 6, 7, 2);
+            //Cach 4
+            int a = 10;
+            Ham4(ref a);
+            //Cach 5
+            int b = 10;
+            Ham5(out b);
+            Console.ReadKey();
+        }
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Vidu1
+{
+    class Program
+    {
+        static int NhapINT(string msg,string err,string errRange ="",int min=int.MinValue,int max=int.MaxValue)
+        {
+            int so;
+            bool ok;
+            do
+            {
+                Console.WriteLine(msg);
+                string s = Console.ReadLine();
+                ok = int.TryParse(s, out so);
+                if (!ok)
+                    Console.WriteLine(err);
+                else
+                {
+                    if(so<min || so>max)
+                    {
+                        Console.WriteLine(errRange);
+                        ok = false;
+                    }
+
+                }
+            } while (!ok);
+            return so;
+        }
+
+        static void Main()
+        {
+            //int a = NhapINT("Nhap so a", "So a can phai la so nguyen");
+            //int b = NhapINT("Nhap so b", "Ban nhap sai dinh dang");
+            int c = NhapINT("Nhap Tuoi=", "Nhap Sai Dinh Dang So", "Tuoi ngoai khoang gia tri", 1, 120);
+            Console.ReadKey();
+        }
+    }
+}
+//////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Vidu1
+{
+    class Program
+    {
+        /// <summary>
+        /// Nhap so nguyen
+        /// </summary>
+        /// <param name="msg">Noi dung nhap lieu</param>
+        /// <param name="err">Noi dung loi sai kieu du lieu</param>
+        /// <returns>So nguyen nhap duoc</returns>
+        static int NhapINT(string msg,string err)
+        {
+            int so;
+            bool ok;
+            do
+            {
+                Console.WriteLine(msg);
+                string s = Console.ReadLine();
+                ok = int.TryParse(s, out so);
+                if (!ok)
+                    Console.WriteLine(err);
+            } while (!ok);
+            return so;
+        }
+        /// <summary>
+        /// Nhap so nguyen trong khoang gia tri min max
+        /// </summary>
+        /// <param name="msg">Noi dung</param>
+        /// <param name="err1">ND loi sai kieu</param>
+        /// <param name="err2">ND loi ngoai khoang</param>
+        /// <param name="min">gia tri min</param>
+        /// <param name="max">gia tri max</param>
+        /// <returns></returns>
+        static int NhapINT(string msg,string err1,string err2,int min,int max)
+        {
+            bool ok;
+            int so;
+            do
+            {
+                so = NhapINT(msg, err1);
+
+                if (so < min || so > max)
+                {
+                    Console.WriteLine(err2);
+                    ok = false;
+                }
+                else ok = true;
+            } while (!ok);
+            return so;
+        }
+        static void Main()
+        {
+            Console.ReadKey();
+        }
+    }
+}
+////////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Vidu1
+{
+    class Program
+    {
+        
+        static void Main()
+        {
+            DateTime dt = new DateTime(2016, 4, 5);
+            Console.WriteLine(dt.ToShortDateString());
+            string str = dt.ToString("MMM!dd?yyyy");
+            Console.WriteLine(str);
+            DateTime dt1 = DateTime.Parse("2016/10/10 13:55:20");
+            Console.WriteLine(dt1.ToShortTimeString());
+            Console.ReadKey();
+        }
+    }
+}

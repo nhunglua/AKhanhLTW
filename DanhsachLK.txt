@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <conio.h>
+
+struct phanso
+{
+	int tu;
+	int mau;
+};
+phanso Gan(int t, int m)
+{
+	phanso p;
+	p.tu = t;
+	p.mau = m;
+	return p;
+}
+void Hienthi(phanso p)
+{
+	printf("%d/%d\n", p.tu, p.mau);
+}
+phanso Tong(phanso ps1, phanso ps2)
+{
+	return Gan(
+		ps1.tu*ps2.mau + ps2.tu*ps1.mau, 
+		ps1.mau*ps2.mau);
+}
+phanso ToiGian(phanso ps)
+{
+	int a = ps.tu, b = ps.mau;
+	while (a != b)
+	{
+		if (a > b) a -= b;
+		if (b > a) b -= a;
+	}
+	return Gan(ps.tu / a, ps.mau / b);
+}
+void main()
+{
+	phanso ps1 = Gan(1, 2), ps2 = Gan(3, 4);
+	Hienthi(ps1);
+	Hienthi(ps2);
+	Hienthi(Tong(ps1, ps2));
+	Hienthi(ToiGian(Tong(ps1, ps2)));
+	_getch();
+}
+	//phanso mang[] = { Gan(1, 2), Gan(2, 3), Gan(3, 4) };
+	//phanso S=Gan(0,	1);
+	//for (int i = 0; i < 3; i++)
+	//{
+	//	S = Tong(S, mang[i]);
+	//}
+	//Hienthi(ToiGian(S));
+////////////////////////////////////////////////////////////////
+#include <stdio.h>
+#include <conio.h>
+
+struct GTSo
+{
+	int giatri;
+	GTSo* tieptheo;
+};
+
+void main()
+{
+	GTSo* a = new GTSo;
+	GTSo* b = new GTSo;
+	GTSo* c = new GTSo;
+	GTSo* d = new GTSo;
+
+	a->giatri = 10;
+	b->giatri = 20;
+	c->giatri = 30;
+	d->giatri = 40;
+
+	a->tieptheo = b;
+	b->tieptheo = c;
+	c->tieptheo = NULL;
+	b->tieptheo = d;
+	d->tieptheo = c;
+	GTSo* temp = new GTSo;
+	temp = a;
+	while (temp!=NULL)
+	{
+		printf("%d ", temp->giatri);
+		temp = temp->tieptheo;
+	}
+
+	_getch();
+}

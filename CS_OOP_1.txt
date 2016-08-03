@@ -1,0 +1,222 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CS_OOP_1
+{
+    class Nguoi
+    {
+        public string Ten;
+        public int Tuoi;
+        public void GioiThieu()
+        {
+            Console.WriteLine("Toi ten la {0}, nam nay toi {1} tuoi", Ten, Tuoi);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Nguoi anhB = new Nguoi();
+            Nguoi anhA = new Nguoi();
+
+            anhA.Ten = "Nguyen Van A";
+            anhA.Tuoi = 10;
+
+            anhB.Ten = "Nguyen Van B";
+            anhB.Tuoi = 15;
+
+            anhA.GioiThieu();
+            anhB.GioiThieu();
+
+            Console.ReadKey();
+        }
+    }
+}
+/////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CS_OOP_1
+{
+    class Nguoi
+    {
+        public string Ten { get; set; }
+        public int Tuoi { get; set; }
+        public Nguoi()
+        {
+            Ten = "";
+            Tuoi = 0;
+        }
+        public Nguoi(string te, int tu)
+        {
+            Ten = te;
+            Tuoi = tu;
+        }
+        public void GioiThieu()
+        {
+            Console.WriteLine("Toi ten la {0}, nam nay toi {1} tuoi", Ten, Tuoi);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Nguoi anhB = new Nguoi() { Ten = "Tran Van B" };
+            Nguoi anhA = new Nguoi("Nguyen Van A",25);
+
+            
+            anhA.GioiThieu();
+            anhB.GioiThieu();
+
+           
+            Console.ReadKey();
+        }
+    }
+}
+/////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CS_OOP_1
+{
+    class Nguoi
+    {
+        string str;
+        public string Ten 
+        { 
+            get {
+                return str + "!!!";
+            } 
+            
+            set {
+                str = value.Trim().Substring(0,5);
+            } 
+        }
+        public int Tuoi;
+        public Nguoi()
+        {
+            str = "";
+            Tuoi = 0;
+        }
+        public Nguoi(string te, int tu)
+        {
+            str = te;
+            Tuoi = tu;
+        }
+        public void GioiThieu()
+        {
+            Console.WriteLine("Toi ten la {0}, nam nay toi {1} tuoi", str, Tuoi);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Nguoi anhA = new Nguoi();
+            anhA.Ten = "Nguyen Van A";
+            Console.WriteLine(anhA.Ten);
+           
+            Console.ReadKey();
+        }
+    }
+}
+//////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CS_OOP_1
+{
+    class Phanso
+    {
+        public int Tu { get; set; }
+        public int Mau { get; set; }
+        public Phanso() { Tu = 0; Mau = 1; }
+        public Phanso(int t,int m) { Tu = t; Mau = m; }
+        public Phanso Cong(Phanso ps)
+        {
+            return new Phanso(Tu * ps.Mau + Mau * ps.Tu,Mau * ps.Mau);
+        }
+        public Phanso Hienthi()
+        {
+            Console.WriteLine("{0}/{1}", Tu, Mau);
+            return this;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Phanso ps1 = new Phanso(1, 2);
+            Phanso ps2 = new Phanso(3, 4);
+            ps1.Hienthi().Cong(ps2.Hienthi()).Hienthi();
+           
+           
+            Console.ReadKey();
+        }
+    }
+}
+---------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CS_OOP_1
+{
+    class Phanso
+    {
+        public int Tu { get; set; }
+        public int Mau { get; set; }
+        public Phanso() { Tu = 0; Mau = 1; }
+        public Phanso(int t,int m) { Tu = t; Mau = m; }
+        public Phanso Cong(Phanso ps)
+        {
+            return new Phanso(Tu * ps.Mau + Mau * ps.Tu,Mau * ps.Mau);
+        }
+        public Phanso Hienthi()
+        {
+            Console.WriteLine("{0}/{1}", Tu, Mau);
+            return this;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Phanso[] arr = new Phanso[]{
+                new Phanso(1,2),
+                new Phanso(3,4),
+                new Phanso(3,4)
+            };
+
+            Phanso sum = new Phanso();
+            foreach (Phanso x in arr)
+            {
+                sum = sum.Cong(x);
+            }
+            sum.Hienthi();
+
+            Console.ReadKey();
+        }
+    }
+}

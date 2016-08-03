@@ -1,0 +1,212 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OOP_5
+{
+    class Nguoi
+    {
+        public string Ten { get; set; }
+        public virtual void GioiThieu()
+        {
+            Console.WriteLine("Xin Chao, toi ten la {0}", Ten);
+        }
+    }
+    class Hocsinh : Nguoi { }
+    class Sieunhan : Nguoi
+    {
+        public override void GioiThieu()
+        {
+            base.GioiThieu();
+            Console.WriteLine("Toi La Sieu Nhan (Nhac Nen)");
+        }
+    }
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Hocsinh hs = new Hocsinh() { Ten = "Nguyen Van A" };
+            Sieunhan sn = new Sieunhan() { Ten = "Clark Kent" };
+            hs.GioiThieu();
+            sn.GioiThieu();
+
+            Console.ReadKey();
+        }
+    }
+}
+///////////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OOP_5
+{
+    abstract class Nguoi
+    {
+        public string Ten { get; set; }
+        public abstract string TTHoSo();
+        public void HienThiHoSo()
+        {
+            string tt = TTHoSo();
+            Console.WriteLine("Ho So Gom Co:");
+            Console.WriteLine(tt);
+        }
+    }
+
+    class Hocsinh : Nguoi
+    {
+        public override string TTHoSo()
+        {
+            return "Ho So Hoc Sinh";
+        }
+    }
+    class Sinhvien:Nguoi
+    {
+        public override string TTHoSo()
+        {
+            return "Ho So Sinh Vien..... Dai hon nhieu";
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Nguoi anhA = new Hocsinh();
+            anhA.HienThiHoSo();
+            anhA = new Sinhvien();
+            anhA.HienThiHoSo();
+            Console.ReadKey();
+        }
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OOP_5
+{
+    interface IVidu
+    {
+        void Ham1();
+    }
+    interface IVidu2
+    {
+        void Ham2();
+    }
+    class Hocsinh : IVidu,IVidu2
+    {
+        public void Ham1()
+        {
+
+        }
+        public void Ham2()
+        {
+
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            IVidu i1 = new Hocsinh();
+
+            Console.ReadKey();
+        }
+    }
+}
+/////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OOP_5
+{
+    class BietBay : IBay { public void Bay() { Console.WriteLine("Toi Biet Bay"); } }
+    class KoBietBay : IBay { public void Bay() { Console.WriteLine("Toi Ko Biet Bay"); } }
+    interface IBay{ void Bay(); }
+    class Vit
+    {
+        IBay ib;
+        public void SetIBay(IBay _ib) { ib = _ib; }
+        public void Bay() { ib.Bay(); }
+    }
+    class VitTroi : Vit { }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            VitTroi vt = new VitTroi();
+            vt.SetIBay(new BietBay());
+            vt.Bay();
+            vt.SetIBay(new KoBietBay());
+            vt.Bay();
+            Console.ReadKey();
+        }
+    }
+}
+//////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OOP_5
+{
+    class Sinhvien
+    {
+        public string Ten { get; set; }
+        public int Tuoi { get; set; }
+        public void Hienthi()
+        {
+            Console.WriteLine("{0} co tuoi la {1}", Ten, Tuoi);
+        }
+    }
+    class SingletonPattern
+    {
+        private static SingletonPattern _obj = null;
+        private SingletonPattern() { }
+        public static SingletonPattern GetLatest()
+        {
+            if (_obj == null)
+                _obj = new SingletonPattern();
+            return _obj;
+        }
+        //////
+        public Sinhvien SV = new Sinhvien();
+    }
+    class Program
+    {
+        static void Ham1()
+        {
+            Sinhvien sv = SingletonPattern.GetLatest().SV;
+            sv.Ten = "Nguyen Van A";
+            sv.Tuoi = 10;
+        }
+        static void Ham2()
+        {
+            Sinhvien sv = SingletonPattern.GetLatest().SV;
+            sv.Ten = "Tran Van B";
+            sv.Tuoi = 20;
+        }
+        static void Main(string[] args)
+        {
+            Ham1();
+            //Ham2();
+            Sinhvien sv = SingletonPattern.GetLatest().SV;
+            sv.Hienthi();
+            Console.ReadKey();
+        }
+    }
+}
+//////////////////////////////////////////////////////////////////
