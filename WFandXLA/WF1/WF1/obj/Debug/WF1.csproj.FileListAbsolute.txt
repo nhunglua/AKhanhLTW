@@ -1,0 +1,12 @@
+c:\users\silver\documents\visual studio 2013\Projects\WF1\WF1\bin\Debug\WF1.exe.config
+c:\users\silver\documents\visual studio 2013\Projects\WF1\WF1\bin\Debug\WF1.exe
+c:\users\silver\documents\visual studio 2013\Projects\WF1\WF1\bin\Debug\WF1.pdb
+c:\users\silver\documents\visual studio 2013\Projects\WF1\WF1\obj\Debug\WF1.csprojResolveAssemblyReference.cache
+c:\users\silver\documents\visual studio 2013\Projects\WF1\WF1\obj\Debug\WF1.Properties.Resources.resources
+c:\users\silver\documents\visual studio 2013\Projects\WF1\WF1\obj\Debug\WF1.csproj.GenerateResource.Cache
+c:\users\silver\documents\visual studio 2013\Projects\WF1\WF1\obj\Debug\WF1.exe
+c:\users\silver\documents\visual studio 2013\Projects\WF1\WF1\obj\Debug\WF1.pdb
+c:\Users\Silver\Documents\Visual Studio 2013\Projects\WF1\WF1\obj\Debug\WF1.frmMain.resources
+c:\Users\Silver\Documents\Visual Studio 2013\Projects\WF1\WF1\obj\Debug\WF1.Form1.resources
+c:\Users\Silver\Documents\Visual Studio 2013\Projects\WF1\WF1\obj\Debug\WF1.Form2.resources
+c:\Users\Silver\Documents\Visual Studio 2013\Projects\WF1\WF1\obj\Debug\WF1.Form3.resources
