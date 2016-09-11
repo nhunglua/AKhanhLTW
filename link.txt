@@ -1,0 +1,6 @@
+1> Generic: 
+http://www.c-sharpcorner.com/UploadFile/b19d5a/basic-generic-repository-pattern-and-unity-of-work-frame-wor/
+2> Reflection:(Lthdt c# Nâng cao)
+https://www.youtube.com/watch?v=pHdnNXikYVY&list=PLXFz3sv-_ux57nhopYlPRsSKQBIL4T-i3&index=9
+3> C# 4.0:
+http://www.functionx.com/csharp/index.htm
